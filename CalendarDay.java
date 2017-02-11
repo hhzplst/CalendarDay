@@ -5,7 +5,7 @@ public class CalendarDay implements Comparable<CalendarDay> {
   private static final int[] MONTH_31 = {1,3,5,7,8,10,12};
   private static final int[] MONTH_30 = {4,6,9,11};
 
-  public CalendarDay(String data) throws Exception{
+  public CalendarDay(String data) throws DayException, MonthException, YearException {
     String[] temp = data.split("/");
     int m = Integer.parseInt(temp[0]);
     int d = Integer.parseInt(temp[1]);
@@ -17,7 +17,7 @@ public class CalendarDay implements Comparable<CalendarDay> {
     year = y;
   }
 
-  public CalendarDay(int m, int d, int y) throws Exception{
+  public CalendarDay(int m, int d, int y) throws DayException, MonthException, YearException {
     checkValidity(m, d, y);
     month = m;
     day = d;
@@ -42,17 +42,17 @@ public class CalendarDay implements Comparable<CalendarDay> {
     return year;
   }
 
-  public void setMonth(int m) throws Exception {
+  public void setMonth(int m) throws DayException, MonthException, YearException {
     checkValidity(m, day, year);
     month = m;
   }
 
-  public void setDay(int d) throws Exception {
+  public void setDay(int d) throws DayException, MonthException, YearException {
     checkValidity(month, d, year);
     day = d;
   }
 
-  public void setYear(int y) throws Exception {
+  public void setYear(int y) throws DayException, MonthException, YearException {
     checkValidity(month, day, y);
     year = y;
   }
@@ -76,7 +76,7 @@ public class CalendarDay implements Comparable<CalendarDay> {
   public String toString() {
     String result = "";
     result = month + "/" + day + "/" + year;
-    result += " (mm/dd/yyyy)"
+    result += " (mm/dd/yyyy)";
     return result;
   }
 
@@ -108,7 +108,7 @@ public class CalendarDay implements Comparable<CalendarDay> {
     return false;
   }
 
-  private static void checkValidity(int m, int d, int y) throws Exception{
+  private static void checkValidity(int m, int d, int y) throws DayException, MonthException, YearException {
     if (y < 1000 || y > 3000) throw new YearException("Year has to be integers between 1000 and 3000");
     if (m < 1 || m > 12) throw new MonthException("Month has to be integers between 1 and 12");
     if (d < 1)
