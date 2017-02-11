@@ -76,6 +76,7 @@ public class CalendarDay implements Comparable<CalendarDay> {
   public String toString() {
     String result = "";
     result = month + "/" + day + "/" + year;
+    result += " (mm/dd/yyyy)"
     return result;
   }
 
