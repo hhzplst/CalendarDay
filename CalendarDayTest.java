@@ -19,6 +19,8 @@ public class CalendarDayTest {
         System.out.println(me.getMessage());
       } catch (DayException de) {
         System.out.println(de.getMessage());
+      } catch (CalendarDayException e) {
+        System.out.println(e.getMessage());
       }
     }
 
@@ -52,4 +54,4 @@ The calendar days entered in ascending order:
 1/1/2012 (mm/dd/yyyy)
 2/29/2012 (mm/dd/yyyy)
 
-****************************END OUTPUT***************************
+****************************END OUTPUT***************************/
